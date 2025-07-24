@@ -3,131 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>FIND YOUR PLAYLIST</title>
     <style>
         body {
+            background-color: black;
+            color: white;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ffffff, #f0f0f0);
-            color: black;
             text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #f8f8f8;
-            padding: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 50px;
         }
         h1 {
-            margin: 0;
-            font-size: 2em;
+            color: purple;
         }
-        section {
-            margin: 40px auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.05);
+        .question {
+            margin: 20px 0;
+        }
+        .box {
+            background-color: #4B0082;
+            border: 2px solid purple;
             border-radius: 10px;
-            width: 80%;
-            max-width: 600px;
-        }
-        select, button {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 1em;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        button {
-            background: #007bff;
-            color: white;
-            font-weight: bold;
+            padding: 20px;
+            margin: 10px auto;
+            width: 300px;
             cursor: pointer;
-            transition: 0.3s;
-            border: none;
+            transition: background-color 0.3s;
         }
-        button:hover {
-            background: #0056b3;
+        .box:hover {
+            background-color: #6A0DAD;
         }
-        #playlist {
-            display: none;
-        }
-        ul#playlistResults {
-            list-style: none;
-            padding: 0;
-        }
-        ul#playlistResults li {
-            background: rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
+        #result {
+            margin-top: 30px;
+            font-size: 24px;
+            padding: 20px;
+            border: 2px solid purple;
+            border-radius: 10px;
+            background-color: #4B0082;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Music Website</h1>
-    </header>
-    
-    <section id="quiz">
-        <h2>Find Your Playlist</h2>
-        <form id="musicQuiz">
-            <label>What genre do you usually listen to?</label>
-            <select id="genre">
-                <option value="chill">Chill Music</option>
-                <option value="hard">Hard Music</option>
-                <option value="vibrant">Vibrant Music</option>
-            </select>
-            
-            <label>When do you usually listen to music?</label>
-            <select id="time">
-                <option value="sleep">When You Sleep</option>
-                <option value="study">When You Study</option>
-                <option value="free">When You Are Free</option>
-            </select>
-            
-            <label>How do you usually behave?</label>
-            <select id="behavior">
-                <option value="badly">Badly</option>
-                <option value="well">Well</option>
-                <option value="normal">Normally</option>
-            </select>
-            
-            <button type="button" onclick="generatePlaylist()">Get My Playlist</button>
-        </form>
-    </section>
 
-    <section id="playlist">
-        <h2>Your Playlist</h2>
-        <ul id="playlistResults">
-        </ul>
-    </section>
-    
+    <h1>FIND YOUR PLAYLIST</h1>
+
+    <div class="question">1) Bạn học môn thuộc lĩnh vực nào?</div>
+    <div class="box" onclick="selectField('KHTN')">KHTN</div>
+    <div class="box" onclick="selectField('KHXH')">KHXH</div>
+
+    <div class="question">2) Bạn học theo phương pháp nào?</div>
+    <div class="box" onclick="selectMethod('brainstorm')">brainstorm</div>
+    <div class="box" onclick="selectMethod('đọc nhẩm/thành tiếng')">đọc nhẩm/thành tiếng</div>
+    <div class="box" onclick="selectMethod('chép bài, viết bài')">chép bài, viết bài</div>
+    <div class="box" onclick="selectMethod('nghe bài giảng')">nghe bài giảng</div>
+    <div class="box" onclick="selectMethod('ôn tập')">ôn tập</div>
+    <div class="box" onclick="selectMethod('làm bài tập')">làm bài tập</div>
+
+    <div id="result">Kết quả sẽ hiển thị ở đây</div>
+
     <script>
-        function generatePlaylist() {
-            const genre = document.getElementById("genre").value;
-            const time = document.getElementById("time").value;
-            const behavior = document.getElementById("behavior").value;
-            const playlistResults = document.getElementById("playlistResults");
-            const playlistSection = document.getElementById("playlist");
-            
-            let playlist = [];
-            
-            if (genre === "chill" && time === "sleep" && behavior === "well") {
-                playlist = ["Lofi Beats", "Calm Piano", "Soft Jazz"];
-            } else if (genre === "hard" && time === "study" && behavior === "badly") {
-                playlist = ["Heavy Metal Focus", "Intense Rock", "Hardcore EDM"];
-            } else if (genre === "vibrant" && time === "free" && behavior === "normal") {
-                playlist = ["Upbeat Pop", "Dance Anthems", "Energetic Indie"];
-            } else {
-                playlist = ["Mixed Vibes", "Custom Blend", "Surprise Playlist"];
+        let field = '';
+        let method = '';
+
+        function selectField(selectedField) {
+            field = selectedField;
+            checkResult();
+        }
+
+        function selectMethod(selectedMethod) {
+            method = selectedMethod;
+            checkResult();
+        }
+
+        function checkResult() {
+            let result = '';
+            if (field === 'KHTN') {
+                switch (method) {
+                    case 'brainstorm': result = '$'; break;
+                    case 'đọc nhẩm/thành tiếng': result = '$$'; break;
+                    case 'nghe bài giảng': result = '$$$$'; break;
+                    case 'ôn tập': result = '$$$$$'; break;
+                    case 'làm bài tập': result = '$$$$$$'; break;
+                    case 'chép bài, viết bài': result = '$$$'; break;
+                }
+            } else if (field === 'KHXH') {
+                switch (method) {
+                    case 'brainstorm': result = '&'; break;
+                    case 'đọc nhẩm/thành tiếng': result = '&&'; break;
+                    case 'chép bài, viết bài': result = '&&&'; break;
+                    case 'nghe bài giảng': result = '&&&&'; break;
+                    case 'ôn tập': result = '&&&&&'; break;
+                    case 'làm bài tập': result = '&&&&&&'; break;
+                }
             }
-            
-            playlistResults.innerHTML = playlist.map(song => `<li>${song}</li>`).join("");
-            playlistSection.style.display = "block";
+            document.getElementById('result').innerText = result;
         }
     </script>
+
 </body>
 </html>
