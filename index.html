@@ -50,12 +50,12 @@
     <div class="box" onclick="selectField('KHXH')">KHXH</div>
 
     <div class="question">2) Bạn học theo phương pháp nào?</div>
-    <div class="box" onclick="selectMethod('brainstorm')">brainstorm</div>
-    <div class="box" onclick="selectMethod('đọc nhẩm/thành tiếng')">đọc nhẩm/thành tiếng</div>
-    <div class="box" onclick="selectMethod('chép bài, viết bài')">chép bài, viết bài</div>
-    <div class="box" onclick="selectMethod('nghe bài giảng')">nghe bài giảng</div>
-    <div class="box" onclick="selectMethod('ôn tập')">ôn tập</div>
-    <div class="box" onclick="selectMethod('làm bài tập')">làm bài tập</div>
+    <div class="box" onclick="selectMethod('Brainstorm')">brainstorm</div>
+    <div class="box" onclick="selectMethod('Đọc nhẩm/thành tiếng')">đọc nhẩm/thành tiếng</div>
+    <div class="box" onclick="selectMethod('Chép bài, viết bài')">chép bài, viết bài</div>
+    <div class="box" onclick="selectMethod('Nghe bài giảng')">nghe bài giảng</div>
+    <div class="box" onclick="selectMethod('Ôn tập')">ôn tập</div>
+    <div class="box" onclick="selectMethod('Làm bài tập')">làm bài tập</div>
 
     <div id="result">Kết quả sẽ hiển thị ở đây</div>
 
@@ -77,21 +77,21 @@
             let result = '';
             if (field === 'KHTN') {
                 switch (method) {
-                    case 'brainstorm': result = '$'; break;
-                    case 'đọc nhẩm/thành tiếng': result = '$$'; break;
-                    case 'nghe bài giảng': result = '$$$$'; break;
-                    case 'ôn tập': result = '$$$$$'; break;
-                    case 'làm bài tập': result = '$$$$$$'; break;
-                    case 'chép bài, viết bài': result = '$$$'; break;
+                    case 'Brainstorm': result = '$'; break;
+                    case 'Đọc nhẩm/thành tiếng': result = '$$'; break;
+                    case 'Nghe bài giảng': result = '$$$$'; break;
+                    case 'Ôn tập': result = '$$$$$'; break;
+                    case 'Làm bài tập': result = '$$$$$$'; break;
+                    case 'CChép bài, viết bài': result = '$$$'; break;
                 }
             } else if (field === 'KHXH') {
                 switch (method) {
-                    case 'brainstorm': result = '&'; break;
-                    case 'đọc nhẩm/thành tiếng': result = '&&'; break;
-                    case 'chép bài, viết bài': result = '&&&'; break;
-                    case 'nghe bài giảng': result = '&&&&'; break;
-                    case 'ôn tập': result = '&&&&&'; break;
-                    case 'làm bài tập': result = '&&&&&&'; break;
+                    case 'Brainstorm': result = '&'; break;
+                    case 'Đọc nhẩm/thành tiếng': result = '&&'; break;
+                    case 'Chép bài, viết bài': result = '&&&'; break;
+                    case 'Nghe bài giảng': result = '&&&&'; break;
+                    case 'Ôn tập': result = '&&&&&'; break;
+                    case 'Làm bài tập': result = '&&&&&&'; break;
                 }
             }
             document.getElementById('result').innerText = result;
